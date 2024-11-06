@@ -4,9 +4,10 @@ import jakarta.validation.Valid;
 
 public record CadastroVenda(
 
+
         @Valid
-        DadosVendedor vendedor,
+        DadosVenda venda,
         @Valid
-        DadosVenda venda
+        DadosVendedorVenda vendedor
 ) {
 }

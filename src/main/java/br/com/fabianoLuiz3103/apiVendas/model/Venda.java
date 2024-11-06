@@ -1,5 +1,6 @@
 package br.com.fabianoLuiz3103.apiVendas.model;
 
+import br.com.fabianoLuiz3103.apiVendas.dto.DadosVenda;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -34,4 +35,13 @@ public class Venda {
     @ManyToOne
     @JoinColumn(name = "id_vendedor", nullable = false)
     private Vendedor vendedor;
+
+    public Venda(DadosVenda dadosVenda){
+        if(dadosVenda.total() != null){
+            this.total = dadosVenda.total();
+        }
+        if(dadosVenda.data() != null){
+            this.data = dadosVenda.data();
+        }
+    }
 }

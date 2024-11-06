@@ -1,5 +1,6 @@
 package br.com.fabianoLuiz3103.apiVendas.model;
 
+import br.com.fabianoLuiz3103.apiVendas.dto.DadosVendedor;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -23,9 +24,18 @@ public class Vendedor {
     @Column(nullable = false)
     private String nome;
 
-    @Column(nullable = false, unique = true)
+    @Column(nullable = false)
     private String email;
 
     @OneToMany(mappedBy = "vendedor")
     private List<Venda> vendas = new ArrayList<>();
+
+    public Vendedor(DadosVendedor dadosVendedor){
+        if(dadosVendedor.nome() !=  null){
+            this.nome = dadosVendedor.nome();
+        }
+        if(dadosVendedor.email() != null){
+            this.email = dadosVendedor.email();
+        }
+    }
 }
